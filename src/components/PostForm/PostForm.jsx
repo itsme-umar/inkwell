@@ -31,7 +31,7 @@ export default function PostForm({ post }) {
           status: data.status,
           featuredImage: file ? file.$id : post.featuredImage,
         })
-        if (dbPost) navigate(`/megaBlog/post/${dbPost.$id}`)
+        if (dbPost) navigate(`/inkwell/post/${dbPost.$id}`)
       } else {
         const file = await appwriteService.uploadFile(data.image[0])
         const dbPost = await appwriteService.createPost({
@@ -42,7 +42,7 @@ export default function PostForm({ post }) {
           featuredImage: file.$id,
           userId: userData?.$id,
         })
-        if (dbPost) navigate(`/megaBlog/post/${dbPost.$id}`)
+        if (dbPost) navigate(`/inkwell/post/${dbPost.$id}`)
       }
     } catch (error) {
       const raw = error?.message ?? error?.toString?.() ?? ''

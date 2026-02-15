@@ -5,7 +5,7 @@ import AppwriteImage from './AppwriteImage'
 function PostCard({ $id, title, featuredImage }) {
   return (
     <Link
-      to={`/megaBlog/post/${$id}`}
+      to={`/inkwell/post/${$id}`}
       className="group block h-full rounded-xl overflow-hidden bg-white border border-surface-200 shadow-card hover:shadow-card-hover hover:border-primary-200 transition-all duration-300 animate-fade-in"
     >
       <div className="aspect-[16/10] overflow-hidden bg-surface-100">

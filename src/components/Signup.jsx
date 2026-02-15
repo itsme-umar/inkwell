@@ -28,7 +28,7 @@ function Signup() {
         const userData = await authService.getCurrentUser()
         if (userData) {
           dispatch(login({ userData }))
-          navigate('/megaBlog/login')
+          navigate('/inkwell/login')
         } else {
           setError('Account created but could not load user. Try signing in on the Login page.')
         }
@@ -44,7 +44,7 @@ function Signup() {
     <div className="flex items-center justify-center min-h-[calc(100vh-12rem)] py-8 px-4">
       <div className="w-full max-w-md rounded-2xl border border-surface-200 bg-white p-8 shadow-soft animate-fade-in">
         <div className="text-center mb-8">
-          <Link to="/megaBlog/" className="inline-block mb-6">
+          <Link to="/inkwell/" className="inline-block mb-6">
             <Logo />
           </Link>
           <h2 className="font-display text-2xl font-bold text-stone-900">
@@ -52,7 +52,7 @@ function Signup() {
           </h2>
           <p className="mt-2 text-sm text-surface-500">
             Already have an account?{' '}
-            <Link to="/megaBlog/login" className="font-medium text-primary-600 hover:underline">
+            <Link to="/inkwell/login" className="font-medium text-primary-600 hover:underline">
               Sign in
             </Link>
           </p>

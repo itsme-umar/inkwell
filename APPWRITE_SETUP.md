@@ -1,4 +1,4 @@
-# Appwrite setup for megaBlog
+# Appwrite setup for InkWell
 
 ## Login not working
 
@@ -7,7 +7,7 @@ If you can’t sign in (or see no error / “Session created but user could not 
 1. **Add your app as a Web platform**
    - In **[Appwrite Console](https://cloud.appwrite.io)** → your project → **Auth** → **Settings** (or **Overview**).
    - Under **Platforms**, click **Add platform** → **Web app**.
-   - Set **Name** to e.g. `megaBlog local`.
+   - Set **Name** to e.g. `InkWell local`.
    - Set **Hostname** to your app’s URL:
      - Local: `localhost` (or `http://localhost:5173` if your host requires a full URL).
      - Production: your real domain, e.g. `myblog.com`.
@@ -34,7 +34,7 @@ Your posts use rich HTML from the editor, which is much longer than 255 characte
 ### Steps in Appwrite Console
 
 1. Open **[Appwrite Console](https://cloud.appwrite.io)** → your project.
-2. Go to **Databases** → select the database used by megaBlog.
+2. Go to **Databases** → select the database used by InkWell.
 3. Open the **collection** that stores posts (same as `VITE_APPWRITE_COLLECTION_ID` in your `.env`).
 4. Open the **Attributes** tab.
 5. Find the **content** attribute:
@@ -43,7 +43,7 @@ Your posts use rich HTML from the editor, which is much longer than 255 characte
 
 6. Wait for the attribute to be ready (status “available”), then try adding a post again.
 
-### Collection attributes required by megaBlog
+### Collection attributes required by InkWell
 
 | Attribute       | Type   | Notes                          |
 |----------------|--------|--------------------------------|

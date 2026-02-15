@@ -17,16 +17,16 @@ export default function Post() {
     if (slug) {
       appwriteService.getPost(slug).then((p) => {
         if (p) setPost(p)
-        else navigate('/megaBlog/')
+        else navigate('/inkwell/')
       })
-    } else navigate('/megaBlog/')
+    } else navigate('/inkwell/')
   }, [slug, navigate])
 
   const deletePost = () => {
     appwriteService.deletePost(post.$id).then((status) => {
       if (status) {
         appwriteService.deleteFile(post.featuredImage)
-        navigate('/megaBlog/')
+        navigate('/inkwell/')
       }
     })
   }
@@ -45,7 +45,7 @@ export default function Post() {
             />
             {isAuthor && (
               <div className="absolute top-4 right-4 flex flex-wrap gap-2">
-                <Link to={`/megaBlog/edit-post/${post.$id}`}>
+                <Link to={`/inkwell/edit-post/${post.$id}`}>
                   <Button bgColor="bg-primary-600" className="shadow-lg">
                     Edit
                   </Button>

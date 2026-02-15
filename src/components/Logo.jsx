@@ -6,7 +6,7 @@ function Logo({ className = '' }) {
       className={`font-display font-bold text-xl sm:text-2xl text-stone-800 ${className}`}
       style={{ letterSpacing: '-0.02em' }}
     >
-      mega<span className="text-primary-600">Blog</span>
+      Ink<span className="text-primary-600">Well</span>
     </span>
   )
 }

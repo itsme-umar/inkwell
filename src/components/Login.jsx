@@ -30,7 +30,7 @@ function Login() {
         const userData = await authService.getCurrentUser()
         if (userData) {
           dispatch(authLogin({ userData }))
-          navigate('/megaBlog/')
+          navigate('/inkwell/')
         } else {
           setError(
             'Session created but user could not be loaded. Add your app URL (e.g. http://localhost:5173) in Appwrite Console → Auth → Platforms (Web), then try again.'
@@ -51,7 +51,7 @@ function Login() {
     <div className="flex items-center justify-center min-h-[calc(100vh-12rem)] py-8 px-4">
       <div className="w-full max-w-md rounded-2xl border border-surface-200 bg-white p-8 shadow-soft animate-fade-in">
         <div className="text-center mb-8">
-          <Link to="/megaBlog/" className="inline-block mb-6">
+          <Link to="/inkwell/" className="inline-block mb-6">
             <Logo />
           </Link>
           <h2 className="font-display text-2xl font-bold text-stone-900">
@@ -59,7 +59,7 @@ function Login() {
           </h2>
           <p className="mt-2 text-sm text-surface-500">
             Don&apos;t have an account?{' '}
-            <Link to="/megaBlog/signup" className="font-medium text-primary-600 hover:underline">
+            <Link to="/inkwell/signup" className="font-medium text-primary-600 hover:underline">
               Sign up
             </Link>
           </p>

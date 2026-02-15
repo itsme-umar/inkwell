@@ -13,7 +13,7 @@ const appwriteBucketId = getEnv('VITE_APPWIRTE_BUCKET_ID', 'VITE_APPWRITE_BUCKET
 const required = { appwriteUrl, appwriteProjectId, appwriteDatabaseId, appwriteCollectionId, appwriteBucketId }
 const missing = Object.entries(required).filter(([, v]) => !v).map(([k]) => k)
 if (missing.length) {
-  console.error('[megaBlog] Missing Appwrite env:', missing.join(', '), '- Check .env has VITE_APPWRITE_* or VITE_APPWIRTE_*')
+  console.error('[InkWell] Missing Appwrite env:', missing.join(', '), '- Check .env has VITE_APPWRITE_* or VITE_APPWIRTE_*')
 }
 
 const conf = {

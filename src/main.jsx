@@ -15,46 +15,46 @@ import EditPost from './pages/EditPost.jsx'
 import Post from './pages/Post.jsx'
 
 const router = createBrowserRouter([{
-  path: '/megaBlog/',
+  path: '/inkwell/',
   element: <App />,
   children: [
     {
-      path: '/megaBlog/',
+      path: '/inkwell/',
       element: <Home />
     },
     {
-      path: '/megaBlog/login',
+      path: '/inkwell/login',
       element: <AuthLayout authentication ={false}>
         <Login />
       </AuthLayout>
     },
     {
-      path: '/megaBlog/signup',
+      path: '/inkwell/signup',
       element: <AuthLayout authentication ={false}>
         <Signup />
       </AuthLayout>
     },
     {
-      path: '/megaBlog/all-posts',
+      path: '/inkwell/all-posts',
       element: <AuthLayout authentication>
         {" "}
         <AllPosts />
       </AuthLayout>
     },
     {
-      path: '/megaBlog/add-post',
+      path: '/inkwell/add-post',
       element: <AuthLayout authentication>
         <AddPost />
       </AuthLayout>
     },
     {
-      path: '/megaBlog/edit-post/:slug',
+      path: '/inkwell/edit-post/:slug',
       element: <AuthLayout authentication>
         <EditPost />
       </AuthLayout>
     },
     {
-      path: '/megaBlog/post/:slug',
+      path: '/inkwell/post/:slug',
       element: <Post />
     },
 

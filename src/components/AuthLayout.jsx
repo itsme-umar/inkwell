@@ -10,9 +10,9 @@ export default function AuthLayout({ children, authentication = true }) {
 
   useEffect(() => {
     if (authentication && !authStatus) {
-      navigate('/megaBlog/login')
+      navigate('/inkwell/login')
     } else if (!authentication && authStatus) {
-      navigate('/megaBlog/')
+      navigate('/inkwell/')
     }
     setLoader(false)
   }, [authStatus, navigate, authentication])
