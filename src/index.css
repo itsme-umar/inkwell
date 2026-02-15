@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Prose styles for post content (rich text from TinyMCE) */
+.browser-css {
+  @apply font-sans text-stone-700 leading-relaxed;
+}
+.browser-css h1 { @apply font-display text-2xl font-semibold mt-8 mb-4 text-stone-900; }
+.browser-css h2 { @apply font-display text-xl font-semibold mt-6 mb-3 text-stone-900; }
+.browser-css h3 { @apply font-display text-lg font-semibold mt-4 mb-2 text-stone-900; }
+.browser-css p { @apply my-3; }
+.browser-css ul { @apply list-disc pl-6 my-3 space-y-1; }
+.browser-css ol { @apply list-decimal pl-6 my-3 space-y-1; }
+.browser-css a { @apply text-primary-600 hover:text-primary-700 underline underline-offset-2; }
+.browser-css blockquote { @apply border-l-4 border-primary-200 pl-4 my-4 italic text-stone-600; }
+.browser-css img { @apply rounded-lg max-w-full h-auto my-4; }
+.browser-css pre,
+.browser-css code { @apply bg-surface-200 rounded px-1.5 py-0.5 text-sm font-mono; }
+.browser-css pre { @apply p-4 overflow-x-auto my-4; }
+.browser-css pre code { @apply p-0 bg-transparent; }
+.browser-css table { @apply w-full border-collapse my-4; }
+.browser-css th,
+.browser-css td { @apply border border-surface-300 px-3 py-2 text-left; }
+.browser-css th { @apply bg-surface-100 font-semibold; }

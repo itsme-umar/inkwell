@@ -1,10 +1,13 @@
+import { Link } from 'react-router-dom'
 
-
-function Logo(width ='100px') {
+function Logo({ className = '' }) {
   return (
-    <div>
-      Logo
-    </div>
+    <span
+      className={`font-display font-bold text-xl sm:text-2xl text-stone-800 ${className}`}
+      style={{ letterSpacing: '-0.02em' }}
+    >
+      mega<span className="text-primary-600">Blog</span>
+    </span>
   )
 }
 

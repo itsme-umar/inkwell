@@ -1,20 +1,29 @@
-import { useEffect, useState } from "react"
-import { useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom"
+import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import Loader from './Loader'
 
-export default function Protected({children , authentication = true}) {
-    const [loader,setLoader] =useState(true)
-    const navigate = useNavigate()
-    const authStatus  = useSelector(state => state.status)
+export default function AuthLayout({ children, authentication = true }) {
+  const [loader, setLoader] = useState(true)
+  const navigate = useNavigate()
+  const authStatus = useSelector((state) => state.status)
 
-    useEffect(()=>{
-      if (authentication && authStatus !== authentication) {
-        navigate('/megaBlog/login')
-      }else if (!authentication && authStatus !== authentication) {
-        navigate('/megaBlog/')
-      }
-        setLoader(false)
-    },[authStatus ,navigate ,authentication])
+  useEffect(() => {
+    if (authentication && !authStatus) {
+      navigate('/megaBlog/login')
+    } else if (!authentication && authStatus) {
+      navigate('/megaBlog/')
+    }
+    setLoader(false)
+  }, [authStatus, navigate, authentication])
 
-  return loader? <h1>Loading...</h1> : <>{children}</>
+  if (loader) {
+    return (
+      <div className="min-h-[40vh] flex items-center justify-center">
+        <Loader size="md" label="Loading..." />
+      </div>
+    )
+  }
+
+  return <>{children}</>
 }

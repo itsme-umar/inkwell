@@ -1,173 +1,111 @@
-// import { useState } from 'react'
-// import { Link, useNavigate } from 'react-router-dom'
-// import { login as authLogin } from '../store/authSlice'
-// import { Button, Logo, Input } from "./index"
-// import { useDispatch } from 'react-redux'
-// import authService from '../appwrite/auth'
-// import { useForm } from 'react-hook-form'
+import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { login as authLogin } from '../store/authSlice'
+import { Button, Logo, Input, Loader } from './index'
+import { useDispatch } from 'react-redux'
+import authService from '../appwrite/auth'
+import { useForm } from 'react-hook-form'
 
-// function Login() {
-//     const navigate = useNavigate()
-//     const dispatch = useDispatch()
-//     const { register, handleSubmit } = useForm()
-//     const [error, setError] = useState("");
-
-//     const login = async (data) => {
-//         setError('');
-//         try {
-//             const session = await authService.login(data)
-//             if (session) {
-//                 const userData = await authService.getCurrentUser()
-//                 if (userData) {
-//                     dispatch(authLogin(userData))
-//                 }
-//                 navigate('/megaBlog/')
-//             }
-//         }
-//         catch (error) {
-//             setError(error.message)
-//         }
-//     }
-
-//     return (
-//         <div className=' flex items-center justify-center w-full' >
-//             <div className=' mx-auto rounded-xl shadow-2xl w-full max-w-lg bg-gray-100 p-10 border-black/10'>
-//                 <div className=' mb-2 flex justify-center '>
-//                     <span className=' inline-block w-full max-w-[100px]'>
-//                         <Logo width='100%' />
-//                     </span>
-//                 </div>
-//                 <h2 className=' text-center text-2xl font-bold leading-light'>Sign in to your Account</h2>
-//                 <p className=' mt-2 text-center text-base text-black/60'>
-//                     Don&apos;t have any account?&nbsp;
-//                     <Link to='/megaBlog/signup'
-//                         className=' font-medium text-primary transition-all duration-200 hover:underline'>
-//                         Sign Up
-//                     </Link>
-//                 </p>
-//                 {error && <p className=' text-red-600 mt-8 text-center'>{error}</p>}
-//                 <form onSubmit={handleSubmit(login)} className=' mt-8'>
-//                     <div className=' space-y-5'>
-//                         <Input
-//                             label="Email: "
-//                             placeholder="Enter your email"
-//                             type="email"
-//                             className = " shadow-lg"
-//                             {...register("email", {
-//                                 required: true,
-//                                 validate: {
-//                                     matchPattern: (value) => /^(?=.{1,64}@.{4,253}$)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value) || "Email address must be a valid address"
-//                                 }
-//                             })}
-//                         />
-
-//                         <Input
-//                             label="Password: "
-//                             placeholder="Enter your password"
-//                             type="password"
-//                             className = " shadow-lg"
-//                             {...register("password", {
-//                                 required: true
-//                             })}
-//                         />
-//                         <Button
-//                             type='submit'
-//                             className=' w-full shadow-2xl text-black bg-slate-500 rounded-full hover:bg-gray-400'
-//                             >Login</Button>
-//                     </div>
-//                 </form>
-//             </div>
-//         </div >
-//     )
-// }
-
-// export default Login
-
-
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { login as authLogin } from '../store/authSlice';
-import { Button, Logo, Input } from "./index";
-import { useDispatch } from 'react-redux';
-import authService from '../appwrite/auth';
-import { useForm } from 'react-hook-form';
-
-function Login() {
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-    const { register, handleSubmit } = useForm();
-    const [error, setError] = useState("");
-
-    const login = async (data) => {
-        setError('');
-        try {
-            // Call the login function from authService
-            const session = await authService.login(data.email, data.password);
-            if (session) {
-                // Fetch current user data after successful login
-                const userData = await authService.getCurrentUser();
-                if (userData) {
-                    dispatch(authLogin(userData));
-                }
-                navigate('/megaBlog/');
-            }
-        }
-        catch (error) {
-            setError(error.message);
-        }
-    };
-
-    return (
-        <div className=' flex items-center justify-center w-full'>
-            <div className=' mx-auto rounded-xl shadow-2xl w-full max-w-lg bg-gray-100 p-10 border-black/10'>
-                <div className=' mb-2 flex justify-center '>
-                    <span className=' inline-block w-full max-w-[100px]'>
-                        <Logo width='100%' />
-                    </span>
-                </div>
-                <h2 className=' text-center text-2xl font-bold leading-light'>Sign in to your Account</h2>
-                <p className=' mt-2 text-center text-base text-black/60'>
-                    Don&apos;t have any account?&nbsp;
-                    <Link to='/megaBlog/signup' className=' font-medium text-primary transition-all duration-200 hover:underline'>
-                        Sign Up
-                    </Link>
-                </p>
-                {error && <p className=' text-red-600 mt-8 text-center'>{error}</p>}
-                <form onSubmit={handleSubmit(login)} className=' mt-8'>
-                    <div className=' space-y-5'>
-                        <Input
-                            label="Email: "
-                            placeholder="Enter your email"
-                            type="email"
-                            className=" shadow-lg"
-                            {...register("email", {
-                                required: true,
-                                validate: {
-                                    matchPattern: (value) => /^(?=.{1,64}@.{4,253}$)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value) || "Email address must be a valid address"
-                                }
-                            })}
-                        />
-
-                        <Input
-                            label="Password: "
-                            placeholder="Enter your password"
-                            type="password"
-                            className=" shadow-lg"
-                            {...register("password", {
-                                required: true
-                            })}
-                        />
-                        <Button
-                            type='submit'
-                            className=' w-full shadow-2xl text-black bg-slate-500 rounded-full hover:bg-gray-400'
-                        >
-                            Login
-                        </Button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    );
+function getErrorMessage(err) {
+  if (!err) return 'Login failed'
+  if (typeof err.message === 'string' && err.message.trim()) return err.message.trim()
+  if (typeof err.response === 'string') return err.response
+  if (err.toString && err.toString() !== '[object Object]') return err.toString()
+  return 'Login failed. Check email and password, and that your app URL is added in Appwrite Console (Auth → Platforms).'
 }
 
-export default Login;
+function Login() {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const { register, handleSubmit, formState: { errors: formErrors } } = useForm()
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
+
+  const login = async (data) => {
+    setError('')
+    setLoading(true)
+    try {
+      const session = await authService.login(data.email, data.password)
+      if (session) {
+        const userData = await authService.getCurrentUser()
+        if (userData) {
+          dispatch(authLogin({ userData }))
+          navigate('/megaBlog/')
+        } else {
+          setError(
+            'Session created but user could not be loaded. Add your app URL (e.g. http://localhost:5173) in Appwrite Console → Auth → Platforms (Web), then try again.'
+          )
+        }
+      } else {
+        setError('Login failed. Please try again.')
+      }
+    } catch (err) {
+      const msg = getErrorMessage(err)
+      setError(msg)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  return (
+    <div className="flex items-center justify-center min-h-[calc(100vh-12rem)] py-8 px-4">
+      <div className="w-full max-w-md rounded-2xl border border-surface-200 bg-white p-8 shadow-soft animate-fade-in">
+        <div className="text-center mb-8">
+          <Link to="/megaBlog/" className="inline-block mb-6">
+            <Logo />
+          </Link>
+          <h2 className="font-display text-2xl font-bold text-stone-900">
+            Sign in to your account
+          </h2>
+          <p className="mt-2 text-sm text-surface-500">
+            Don&apos;t have an account?{' '}
+            <Link to="/megaBlog/signup" className="font-medium text-primary-600 hover:underline">
+              Sign up
+            </Link>
+          </p>
+        </div>
+        {(error || Object.keys(formErrors).length > 0) && (
+          <div className="mb-4 p-3 rounded-lg bg-red-50 text-red-700 text-sm text-center" role="alert">
+            {error || (formErrors.email?.message ?? formErrors.password?.message ?? 'Please fix the errors below.')}
+          </div>
+        )}
+        <form onSubmit={handleSubmit(login)} className="space-y-5">
+          <Input
+            label="Email"
+            placeholder="you@example.com"
+            type="email"
+            {...register('email', {
+              required: 'Email is required',
+              validate: (v) =>
+                /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) || 'Enter a valid email address',
+            })}
+            error={formErrors.email?.message}
+          />
+          <Input
+            label="Password"
+            placeholder="••••••••"
+            type="password"
+            {...register('password', { required: 'Password is required' })}
+            error={formErrors.password?.message}
+          />
+          <Button
+            type="submit"
+            disabled={loading}
+            className="w-full bg-primary-600 hover:bg-primary-700 disabled:opacity-70 flex items-center justify-center gap-2"
+          >
+            {loading ? (
+              <>
+                <Loader size="sm" light />
+                <span>Signing in…</span>
+              </>
+            ) : (
+              'Sign in'
+            )}
+          </Button>
+        </form>
+      </div>
+    </div>
+  )
+}
+
+export default Login

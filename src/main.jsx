@@ -55,9 +55,7 @@ const router = createBrowserRouter([{
     },
     {
       path: '/megaBlog/post/:slug',
-      element: <AuthLayout authentication>
-        <Post />
-      </AuthLayout>
+      element: <Post />
     },
 
   ]
